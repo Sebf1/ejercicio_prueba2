@@ -1,0 +1,116 @@
+sw = True
+ninos = 2500
+adultos = 5000
+adultos_mayores = 1000
+op = 0
+cant_ninos = 0
+cant_adultos = 0
+cant_adultosmayores = 0
+avanzar = 1
+cant = 0
+total = 0
+print("---------------------------------------------")
+print("Bienvenidos al Club de Deportes Buena Ventura")
+print("---------------------------------------------")
+print(" ")
+try:
+    while sw:
+        print("------- Menú --------")
+        print("1. Compra de entradas")
+        print("2. Mostrar boleta")
+        print("3. Salir")
+
+        op = int(input("Digite la opción que desea realizar: "))
+
+        if op == 1:
+            print(" ")
+            print("-------Comprar Entradas Disponibles----------")
+            print(" ")
+            print("Precios:")
+            print(" ")
+            print("1. Niños           (De 5 a 12 años)      $2.500")
+            print("2. Adultos         (De 13 a 64 años)     $5.000")
+            print("3. Adultos Mayores (Desde 65 años y mas) $1.000")
+            print(" ")
+
+            while avanzar == 1:
+                tipo_entrada = int(input(" ¿Qué entrada desea comprar?: "))
+
+                if tipo_entrada == 1:
+                    cant = int(input("Ingrese la cantidad de entradas de niño que desee comprar: "))
+                    cant_ninos += cant
+                elif tipo_entrada == 2:
+                    cant = int(input("Ingrese la cantidad de entradas de adulto que desee comprar: "))
+                    cant_adultos += cant
+                elif tipo_entrada == 3:
+                    cant = int(input("Ingrese la cantidad de entradas de adulto mayor que desee comprar: "))
+                    cant_adultosmayores += cant
+                else:
+                    print("Seleccione una opción correcta")
+
+                avanzar = int(input(" ¿Desea más entradas?; Ingrese (1) para seguir comprando // (2) para volver al menú principal: "))
+
+        elif op == 2:
+            print("----------- Mostrar Boleta -----------")
+            print("Dia Viernes tiene un 10% de descuento Niños")
+            print("Dia viernes tiene un  5% de descuento Adultos")
+            print(" ")
+            dia = input("Ingrese el día de la semana que desea la entrada: ").lower()
+            print(" ")
+
+            if dia in ['viernes']:
+                total = ((cant_ninos * ninos) * 0.10) + ((cant_adultos * adultos) * 0.05) + (cant_adultosmayores * adultos_mayores)
+                descuento = total 
+
+                print("-------------------------------------")
+                print("   Club de Deportes Buena Ventura    ")
+                print("-------------------------------------")
+
+                if cant_ninos > 0:
+                    print(f"{cant_ninos} Entrada Niños $ {cant_ninos * ninos}")
+                if cant_adultos > 0:
+                    print(f"{cant_adultos} Entradas Adultos $ {cant_adultos * adultos}")
+                if cant_adultosmayores > 0:
+                    print(f"{cant_adultosmayores} Entradas Adulto Mayores $ {cant_adultosmayores * adultos_mayores}")
+
+                print("----------------------------------------------")
+                print(" ")
+                print(f"Descuento $ ,{int(descuento)}")
+                print(f"Subtotal $ {int(total)}")
+                print("----------------------------------------------")
+                print(f"Total a Pagar $ {int(total - descuento)}")
+                print("Muchas gracias por su compra.  Disfrute el dia.")
+                sw = False
+
+            else:
+                total = (cant_ninos * ninos) + (cant_adultos * adultos) + (cant_adultosmayores * adultos_mayores)
+
+                print("-------------------------------------")
+                print("   Club de Deportes Buena Ventura    ")
+                print("-------------------------------------")
+
+                if cant_ninos > 0:
+                    print(f"{cant_ninos} Entrada Niños ${cant_ninos * ninos}")
+                if cant_adultos > 0:
+                    print(f"{cant_adultos} Entradas Adultos ${cant_adultos * adultos}")
+                if cant_adultosmayores > 0:
+                    print(f"{cant_adultosmayores} Entradas Adulto mayores $ {cant_adultosmayores * adultos_mayores}")
+
+                print("----------------------------------------------")
+                print(" ")
+                print(f"Total a Pagar ${int(total)}")
+                print("----------------------------------------------")
+                print("Muchas gracias por su compra.  Disfrute el dia")
+                sw = False
+
+        elif op == 3:
+            print("-----------------------------------------------------------------")
+            print("      Gracias por asistir a Club Deportivo Buena Ventura         ")
+            print("-----------------------------------------------------------------")
+            sw = False
+
+        else:
+            print("Ingrese una opción válida")
+
+except (ValueError, TypeError):
+    print("Ingrese una opción válida")
